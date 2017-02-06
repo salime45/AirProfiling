@@ -28,6 +28,6 @@ def savePcap(path):
 
         
         
-savePcap("/home/ultra/Downloads/20170129-2.pcapng")
+savePcap("cap/example.pcapng")
 
 
