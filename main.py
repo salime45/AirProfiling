@@ -1,6 +1,7 @@
 
 import scapy_http.http as scapyh
-from model import Perfil
+import datetime;
+
 from scapy.utils import rdpcap
 from scapy.layers.inet import IP
 
@@ -13,7 +14,7 @@ def savePcap(path):
         
         p = packets[i]
         print("MAC: " + p.src)
-        print("TIME: " + str( p.time))
+        print("TIME: " + getDate(p.time))
         print("IP: " +  packets[i][IP].dst)
 
         if scapyh.HTTPRequest in p:            
@@ -26,8 +27,11 @@ def savePcap(path):
         perfil.mac = p.src
         '''
 
+def getDate(time):
+    return datetime.datetime.fromtimestamp(time).strftime('%d-%m-%Y %H:%M:%S')
         
         
 savePcap("cap/example.pcapng")
+
 
 
